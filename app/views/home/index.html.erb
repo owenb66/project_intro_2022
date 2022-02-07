@@ -1,0 +1,37 @@
+<h1>Home#index</h1>
+<div class="columns">
+  <div class="column">
+    <h2 class="title is-2">Top 100 video game sales</h2>
+    <ol class="ml-5">
+      <% @games.each do |game| %>
+        <li>
+          <%= link_to game.name, game%>
+          <em>published by <%= game.publisher.name %></em>
+        </li>
+      <% end %>
+    </ol>
+    <p class="mt-5">
+      <strong><%= link_to '🏹 Explore more Top Games', games_path %></strong>
+    </p>
+  </div>
+  <div class="column">
+    <h2 class="title is-2">Top video game publishers</h2>
+    <ol class="ml-5">
+      <%= render @publishers %>
+    </ol>
+    <p class="mt-5">
+      <strong><%= link_to '🏹 Explore more Top Game Publishers', publishers_path %></strong>
+    </p>
+  </div>
+  <div class="column">
+    <h2 class="title is-2">Most popular game platforms</h2>
+    <ol class="ml-5">
+      <%= render @platforms %>
+    </ol>
+    <p class="mt-5">
+      <strong><%= link_to '🏹 Explore more Popular Game Platforms', platforms_path %></strong>
+    </p>
+  </div>
+</div>
+
+

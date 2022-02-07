@@ -1,6 +1,7 @@
 <h1 class="ml-5">Game Publishers</h1>
 <ol>
-  <% @publishers.each do |publisher| %>
-    <li><%= link_to publisher.name, publisher %></li>
-  <% end %>
+  <%= render @publishers %>
+
+  <%# @publishers.each do |publisher| %>
+  <%# end %>
 </ol>

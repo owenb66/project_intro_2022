@@ -1,6 +1,13 @@
 <h2 class="title is-2"><%= @platform.name %></h2>
 
-<p>There are <%= @platform.games.count %> games playing on <%= @platform.name %></p>
+<article class="message is-dark">
+  <div class="message-header">
+    <p>Description</p>
+  </div>
+  <div class ="message-body">
+  There are <%= @platform.games.count %> games playing on <%= @platform.name %>
+  </div>
+</article>
 
 <ul>
   <% @platform.games.each do |game| %>

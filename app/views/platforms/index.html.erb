@@ -1,6 +1,4 @@
 <h1 class="ml-5">Game Platforms</h1>
 <ol>
-  <% @platforms.each do |platform| %>
-    <li><%= link_to platform.name, platform %></li>
-  <% end %>
+  <%= render @platforms %>
 </ol>

@@ -1,6 +1,5 @@
 <h1>The world's top 100 video game sales</h1>
 <ol class="ml-5">
-  <% @games.take(100).each do |game| %>
-    <li><%= link_to game.name, game %> on the platform <%= link_to game.platform.name %>, was produced by <%= link_to game.publisher.name %></li>
-  <% end %>
+  <%= render @games %>
+  <hr style="width:50%;text-align:left;margin-left:0">
 </ol>

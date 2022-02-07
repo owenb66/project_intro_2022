@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   # get 'platforms/index'
   # get 'platforms/show'
   # get 'publishers/index'
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :show]
   resources :publishers, only: [:index, :show]
   resources :platforms, only: [:index, :show]
+
+  #default route to website as home page route
+  root to: "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
