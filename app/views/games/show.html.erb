@@ -1,2 +1,58 @@
-<h1><%= @game.name %></h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<h2 class="title is-2"><%= @game.name %></h2>
+
+<article class="message is-dark">
+  <div class="message-header">
+    <p>Description</p>
+  </div>
+  <div class ="message-body">
+  The game with sales greater than 100,000 copies.
+  </div>
+</article>
+
+<progress class="progress is-info" value="<%= @game.rank %>" max='100'>
+  <%= @game.rank %>"
+</progress>
+<p class="notification is-info">
+  <strong>The selling rank: </strong>
+  <%= @game.rank %>
+</p>
+
+<p>
+  <strong>Release Year: </strong>
+  <%= @game.year %>
+</p>
+
+<p>
+  <strong>Game Platform: </strong>
+  <%= link_to @game.platform.name, @game.platform %>
+</p>
+
+<p>
+  <strong>Game Publisher: </strong>
+  <%= link_to @game.publisher.name, @game.publisher %>
+</p>
+
+<p>
+  <strong>Sales in North America: </strong>
+  <%= @game.NA_sales %> millions
+</p>
+
+<p>
+  <strong>Sales in Europe</strong>
+  <%= @game.EU_sales %> millions
+</p>
+
+<p>
+  <strong>Sales in Japan:</strong>
+  <%= @game.JP_sales %> millions
+</p>
+
+<p>
+  <strong>Sales in the rest of the world: </strong>
+  <%= @game.other_sales %> millions
+</p>
+
+<p>
+  <strong>Total worldwide sales: </strong>
+  <%= @game.Global_sales %> millions
+</p>

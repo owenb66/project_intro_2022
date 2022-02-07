@@ -1,2 +1,12 @@
-<h1>Publishers#show</h1>
-<p>Find me in app/views/publishers/show.html.erb</p>
+<h2 class="title is-2"><%= @publisher.name %></h2>
+<p>
+  This game publisher released <%= @publisher.games.count %> of the top-selling games.
+</p>
+
+<ul>
+  <% @publisher.games.each do |game| %>
+    <li>
+      <%= link_to game.name, game %> <!--on --> <%#= link_to @game.platform.name, @game.platform %> with <%= game.Global_sales %> millions worldwide sales.
+    </li>
+  <% end %>
+</ul>

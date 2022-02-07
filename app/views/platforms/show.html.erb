@@ -1,2 +1,11 @@
-<h1>Platforms#show</h1>
-<p>Find me in app/views/platforms/show.html.erb</p>
+<h2 class="title is-2"><%= @platform.name %></h2>
+
+<p>There are <%= @platform.games.count %> games playing on <%= @platform.name %></p>
+
+<ul>
+  <% @platform.games.each do |game| %>
+    <li>
+      <%= link_to game.name, game %> is playing on the platform of <%= @platform.name %>.
+    </li>
+  <% end %>
+</ul>
