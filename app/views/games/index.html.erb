@@ -1,5 +1,5 @@
 <h1>The world's top 100 video game sales</h1>
 <ol class="ml-5">
-  <%= render @games %>
+  <%= render partial:'game', collection: @games, locals: {show_link:true} %>
   <hr style="width:50%;text-align:left;margin-left:0">
 </ol>
