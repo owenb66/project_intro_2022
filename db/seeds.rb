@@ -42,7 +42,7 @@ Page.create(
 )
 Page.create(
   title: "Contact Me",
-  content: "If you like this website and would lile to reach out, please email me at owenbai@hotmail.com"
+  content: "If you like this website and would lile to reach out, please email me at owenbai@hotmail.com",
   permalink: "contact me"
 )
 puts "Created #{Publisher.count} Publishers."
