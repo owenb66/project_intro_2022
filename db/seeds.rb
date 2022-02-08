@@ -3,7 +3,7 @@ require "csv"
 Game.delete_all
 Publisher.delete_all
 Platform.delete_all
-
+Page.delete_all
 
 # Adding the file path of the csv file
 csvfile = Rails.root.join("db/vgsales.csv")
@@ -35,6 +35,16 @@ games.each do |g|
   end
 end
 
+Page.create(
+  title: "About the Data",
+  content: "The data sources powering this website was provided by Kaggle.",
+  permalink: "about"
+)
+Page.create(
+  title: "Contact Me",
+  content: "If you like this website and would lile to reach out, please email me at owenbai@hotmail.com"
+  permalink: "contact me"
+)
 puts "Created #{Publisher.count} Publishers."
 puts "Created #{Platform.count} Platforms."
 puts "Created #{Game.count} Games."

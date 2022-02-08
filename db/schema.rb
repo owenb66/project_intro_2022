@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_06_010507) do
+ActiveRecord::Schema.define(version: 2022_02_08_002253) do
 
   create_table "games", force: :cascade do |t|
     t.integer "rank"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 2022_02_06_010507) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["platform_id"], name: "index_games_on_platform_id"
     t.index ["publisher_id"], name: "index_games_on_publisher_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "permalink"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "platforms", force: :cascade do |t|

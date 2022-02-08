@@ -1,7 +1,7 @@
 <h1>Home#index</h1>
 <div class="columns">
   <div class="column">
-    <h2 class="title is-2">Top 100 video game sales</h2>
+    <h2 class="title is-3">Top 100 video game sales</h2>
     <ol class="ml-5">
       <% @games.each do |game| %>
         <li>
@@ -15,7 +15,7 @@
     </p>
   </div>
   <div class="column">
-    <h2 class="title is-2">Top video game publishers</h2>
+    <h2 class="title is-3">Top video game publishers</h2>
     <ol class="ml-5">
       <%= render @publishers %>
     </ol>
@@ -24,7 +24,7 @@
     </p>
   </div>
   <div class="column">
-    <h2 class="title is-2">Most popular game platforms</h2>
+    <h2 class="title is-3">Most popular game platforms</h2>
     <ol class="ml-5">
       <%= render @platforms %>
     </ol>
