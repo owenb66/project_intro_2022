@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   def index
     # @games = Game.order("rank ASC") # create an n+1 issue
-    @games = Game.includes(:publisher, :platform).all.order("rank ASC")
+    @games = Game.includes(:publisher, :platform).all.order("rank ASC").page params[:page]
   end
 
   def show

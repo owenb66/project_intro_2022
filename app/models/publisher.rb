@@ -9,4 +9,6 @@ class Publisher < ApplicationRecord
         .group("publishers.id")
         .order("game_count DESC")
   end
+
+  paginates_per 10
 end
