@@ -18,6 +18,7 @@ games = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 games.each do |g|
   publisher = Publisher.find_or_create_by(name: g["Publisher"])
   platform = Platform.find_or_create_by(name: g["Platform"])
+  #genre = Genre.find_or_create_by(name: g["Genre"])
 
   if publisher && publisher.valid? && platform && platform.valid?
     game = publisher.games.create(
@@ -37,7 +38,7 @@ games.each do |g|
     end
 
     genre = Genre.find_or_create_by(name: g["Genre"]) #.split(",").map(&:strip)
-    game_genre = GameGenre.find_or_create_by(game: game, genre: genre)
+    GameGenre.create(game: game, genre: genre)
     # genres.each do |genre_name|
     #   genre = Genre.create(name: genre_name)
     #   GameGenre.create(game: game, genre: genre)

@@ -1,0 +1,8 @@
+<p class="mb-5">
+  Found <%= pluralize(@games.count, "Game") %> when searching for: <%= params[:keywords] %>
+</p>
+<ul>
+  <% @games.each do |game| %>
+   <li><%= link_to game.name, game %></li>
+  <% end %>
+</ul>

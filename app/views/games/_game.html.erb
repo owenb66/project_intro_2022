@@ -25,6 +25,11 @@
 </p>
 
 <p>
+  <strong>Game Genre: </strong>
+  <%= game.genres.map(&:name).join(",") %>
+</p>
+
+<p>
   <strong>Release Year: </strong>
   <%= game.year %>
 </p>

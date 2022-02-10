@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: %i[ show edit update destroy ]
+  before_action :set_page, only: %i[show edit update destroy]
   http_basic_authenticate_with name: "admin", password: "pa33word"
 
   # GET /pages or /pages.json
@@ -8,12 +8,14 @@ class PagesController < ApplicationController
   end
 
   def show
+    # @page = Page.find_by(params[:id])
+    @page = Page.find(params[:id])
   end
 
   # GET /pages/1 or /pages/1.json
-  # def permalink
-  #   @page = Page.find_by(permalink: params[:permalink])
-  # end
+  def permalink
+    @page = Page.find_by(permalink: params[:permalink])
+  end
 
   # GET /pages/new
   def new
@@ -22,6 +24,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
+    @page = Page.find(params[:id])
   end
 
   # POST /pages or /pages.json
@@ -30,7 +33,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to page_url(@page), notice: "Page was successfully created." }
+        format.html { redirect_to pages_path, notice: "Page was successfully created." }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,13 +66,14 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def page_params
-      params.require(:page).permit(:title, :content, :permalink)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_page
+    @page = Page.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def page_params
+    params.require(:page).permit(:title, :content, :permalink)
+  end
 end
