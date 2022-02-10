@@ -1,9 +1,11 @@
 require "csv"
 
+GameGenre.delete_all
 Game.delete_all
 Publisher.delete_all
 Platform.delete_all
 Page.delete_all
+Genre.delete_all
 
 # Adding the file path of the csv file
 csvfile = Rails.root.join("db/vgsales.csv")
@@ -29,7 +31,17 @@ games.each do |g|
       other_sales: g["Other_Sales"],
       Global_sales: g["Global_Sales"]
     )
-    puts "invalid game #{g["Name"]}" unless game&.valid?
+    unless game&.valid?
+      puts "invalid game #{g["Name"]}"
+      next
+    end
+
+    genre = Genre.find_or_create_by(name: g["Genre"]) #.split(",").map(&:strip)
+    game_genre = GameGenre.find_or_create_by(game: game, genre: genre)
+    # genres.each do |genre_name|
+    #   genre = Genre.create(name: genre_name)
+    #   GameGenre.create(game: game, genre: genre)
+    #end
   else
     puts "invalid publisher #{g["Publisher"]} for game #{g['Name']}."
   end
@@ -43,9 +55,11 @@ Page.create(
 Page.create(
   title: "Contact Me",
   content: "If you like this website and would lile to reach out, please email me at owenbai@hotmail.com",
-  permalink: "contact me"
+  permalink: "contact"
 )
 puts "Created #{Publisher.count} Publishers."
 puts "Created #{Platform.count} Platforms."
 puts "Created #{Game.count} Games."
+puts "Created #{Genre.count} genres."
+puts "Created #{GameGenre.count} genres."
 
