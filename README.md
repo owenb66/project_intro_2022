@@ -1,24 +1,6 @@
 # README
 This project is about fetching data from csv files.
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It is about Video Games Sales worldwide, and it analyzes sales data from over 16,500 games.
+This dataset contains a list of video games with sales greater than 100,000 copies.
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
