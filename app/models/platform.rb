@@ -9,4 +9,5 @@ class Platform < ApplicationRecord
         .group("platforms.id")
         .order("game_count DESC")
   end
+  paginates_per 10
 end
