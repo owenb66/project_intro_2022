@@ -6,7 +6,7 @@ class Game < ApplicationRecord
 
   validates :name, :year, :rank, :NA_sales, :EU_sales, :JP_sales, :other_sales, :Global_sales,
             presence: true
-  # validates :name, uniqueness: true
+  #   validates :name, uniqueness: true
   validates :rank, numericality: { only_integer: true }
   validates :NA_sales, :EU_sales, :JP_sales, :other_sales, :Global_sales, numericality: true
 
