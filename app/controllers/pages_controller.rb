@@ -8,9 +8,11 @@ class PagesController < ApplicationController
   end
 
   def show
-    # @page = Page.find_by(params[:id])
-    @page = Page.find(params[:id])
   end
+  # def show
+  #   # @page = Page.find_by(params[:id])
+  #   @page = Page.find(params[:id])
+  # end
 
   # GET /pages/1 or /pages/1.json
   def permalink
@@ -20,12 +22,15 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    logger.debug("Logged messaged: #{@page}")
   end
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
   end
+  # def edit
+  #   @page = Page.find(params[:id])
+  # end
 
   # POST /pages or /pages.json
   def create

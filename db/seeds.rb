@@ -10,7 +10,7 @@ Genre.delete_all
 # Adding the file path of the csv file
 csvfile = Rails.root.join("db/vgsales.csv")
 
-#puts "Loading Games from the CSV file: #{csvfile}"
+# puts "Loading Games from the CSV file: #{csvfile}"
 
 csv_data = File.read(csvfile)
 games = CSV.parse(csv_data, headers: true, encoding: "utf-8")
@@ -18,49 +18,48 @@ games = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 games.each do |g|
   publisher = Publisher.find_or_create_by(name: g["Publisher"])
   platform = Platform.find_or_create_by(name: g["Platform"])
-  #genre = Genre.find_or_create_by(name: g["Genre"])
+  # genre = Genre.find_or_create_by(name: g["Genre"])
 
   if publisher && publisher.valid? && platform && platform.valid?
     game = publisher.games.create(
-      rank: g["Rank"],
-      name: g["Name"],
-      year: g["Year"],
-      platform_id: platform["id"],
-      NA_sales: g["NA_Sales"],
-      EU_sales: g["EU_Sales"],
-      JP_sales: g["JP_Sales"],
-      other_sales: g["Other_Sales"],
+      rank:         g["Rank"],
+      name:         g["Name"],
+      year:         g["Year"],
+      platform_id:  platform["id"],
+      NA_sales:     g["NA_Sales"],
+      EU_sales:     g["EU_Sales"],
+      JP_sales:     g["JP_Sales"],
+      other_sales:  g["Other_Sales"],
       Global_sales: g["Global_Sales"]
     )
     unless game&.valid?
-      puts "invalid game #{g["Name"]}"
+      puts "invalid game #{g['Name']}"
       next
     end
 
-    genre = Genre.find_or_create_by(name: g["Genre"]) #.split(",").map(&:strip)
+    genre = Genre.find_or_create_by(name: g["Genre"]) # .split(",").map(&:strip)
     GameGenre.create(game: game, genre: genre)
     # genres.each do |genre_name|
     #   genre = Genre.create(name: genre_name)
     #   GameGenre.create(game: game, genre: genre)
-    #end
+    # end
   else
-    puts "invalid publisher #{g["Publisher"]} for game #{g['Name']}."
+    puts "invalid publisher #{g['Publisher']} for game #{g['Name']}."
   end
 end
 
 Page.create(
-  title: "About the Data",
-  content: "The data sources powering this website was provided by Kaggle.",
+  title:     "About the Data",
+  content:   "The data sources powering this website was provided by Kaggle.",
   permalink: "about"
 )
 Page.create(
-  title: "Contact Me",
-  content: "If you like this website and would lile to reach out, please email me at owenbai@hotmail.com",
+  title:     "Contact Me",
+  content:   "If you like this website and would lile to reach out, please email me at owenbai@hotmail.com",
   permalink: "contact"
 )
 puts "Created #{Publisher.count} Publishers."
 puts "Created #{Platform.count} Platforms."
 puts "Created #{Game.count} Games."
 puts "Created #{Genre.count} genres."
-puts "Created #{GameGenre.count} genres."
-
+puts "Created #{GameGenre.count} game genres."

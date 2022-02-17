@@ -18,7 +18,7 @@
         <td><%= page.content %></td>
         <td><%= page.permalink %></td>
 
-        <td><%= link_to 'Edit', edit_page_path(page),class: 'button is-warning' %></td>
+        <td><%= link_to 'Edit', edit_page_path(page), class: 'button is-warning' %></td>
         <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' },class: 'button is-danger' %></td>
       </tr>
     <% end %>
