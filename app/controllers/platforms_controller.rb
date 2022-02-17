@@ -1,6 +1,6 @@
 class PlatformsController < ApplicationController
   def index
-    @platforms = Platform.ordered_by_games # .page params[:page]
+    @platforms = Platform.ordered_by_games.page params[:page]
     # @platforms = Platform.select("platforms.*")
     #                                   .select("COUNT(platforms.id) as game_count")
     #                                   .left_joins(:games)
